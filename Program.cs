@@ -1,18 +1,15 @@
 ﻿using System.IO;
 
-string sourcePath = @"C:\temp\file1.txt";
-string targetPath = @"C:\temp\file2.txt";
+string sourcePath = @"C:\temp\myfolder";
+
 
 try
 {
-    string[] lines = File.ReadAllLines(sourcePath);
-
-    using (StreamWriter sw = File.AppendText(targetPath))
+    var folders = Directory.EnumerateDirectories(sourcePath,"*.*", SearchOption.AllDirectories);
+    Console.WriteLine("Folders:");
+    foreach(string s in folders)
     {
-        foreach(string line in lines)
-        {
-            sw.WriteLine(line.ToUpper());
-        }
+        Console.WriteLine(s);
     }
 }
 catch (IOException e)
