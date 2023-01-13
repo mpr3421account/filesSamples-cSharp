@@ -1,12 +1,12 @@
 ﻿using System.IO;
 
-string sourcePath = @"C:\temp\file12.txt";
+string sourcePath = @"C:\temp\file1.txt";
 
 try
 {
-    using (FileStream fs = new FileStream(sourcePath, FileMode.Open))
-    {
-        using (StreamReader sr = new StreamReader(fs))
+    //using (FileStream fs = new FileStream(sourcePath, FileMode.Open))
+    //{
+    using (StreamReader sr = File.OpenText(sourcePath)) 
         {
             while (!sr.EndOfStream)
             {
@@ -14,7 +14,7 @@ try
                 Console.WriteLine(line);
             }
         }
-    }
+    //}
 }
 catch(IOException e)
 {
