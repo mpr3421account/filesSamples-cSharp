@@ -1,15 +1,22 @@
 ﻿using System.IO;
 
-string sourcePath = @"C:\temp\file1.txt";
+string sourcePath = @"C:\temp\file12.txt";
 
-using (FileStream fs = new FileStream(sourcePath, FileMode.Open))
+try
 {
-    using (StreamReader sr = new StreamReader(fs))
+    using (FileStream fs = new FileStream(sourcePath, FileMode.Open))
     {
-        while(!sr.EndOfStream)
+        using (StreamReader sr = new StreamReader(fs))
         {
-            string line = sr.ReadLine();
-            Console.WriteLine(line);
+            while (!sr.EndOfStream)
+            {
+                string line = sr.ReadLine();
+                Console.WriteLine(line);
+            }
         }
     }
+}
+catch(IOException e)
+{
+    Console.WriteLine("An error occcurred: " + e.Message);
 }
