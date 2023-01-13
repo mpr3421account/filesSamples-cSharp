@@ -2,14 +2,19 @@
 
 string sourcePath = @"C:\temp\file1.txt";
 
-FileStream fs = null;
+//FileStream fs = null;
 StreamReader sr = null;
 try
 {
-    fs = new FileStream(sourcePath, FileMode.Open);
-    sr = new StreamReader(fs);
-    string line = sr.ReadLine();
-    Console.WriteLine(line);
+    //fs = new FileStream(sourcePath, FileMode.Open);
+    
+    sr = File.OpenText(sourcePath);
+    while (!sr.EndOfStream)
+    {
+        string line = sr.ReadLine();
+        Console.WriteLine(line);
+    }
+    
 }
 catch(IOException e)
 {
@@ -18,5 +23,5 @@ catch(IOException e)
 finally
 {
     if(sr != null) sr.Close();
-    if(fs != null) fs.Close();
+    //if(fs != null) fs.Close();
 }
