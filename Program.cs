@@ -1,22 +1,21 @@
 ﻿using System.IO;
 
 string sourcePath = @"C:\temp\file1.txt";
+string targetPath = @"C:\temp\file2.txt";
 
 try
 {
-    //using (FileStream fs = new FileStream(sourcePath, FileMode.Open))
-    //{
-    using (StreamReader sr = File.OpenText(sourcePath)) 
+    string[] lines = File.ReadAllLines(sourcePath);
+
+    using (StreamWriter sw = File.AppendText(targetPath))
+    {
+        foreach(string line in lines)
         {
-            while (!sr.EndOfStream)
-            {
-                string line = sr.ReadLine();
-                Console.WriteLine(line);
-            }
+            sw.WriteLine(line.ToUpper());
         }
-    //}
+    }
 }
-catch(IOException e)
+catch (IOException e)
 {
     Console.WriteLine("An error occcurred: " + e.Message);
 }
