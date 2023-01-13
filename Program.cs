@@ -1,26 +1,13 @@
 ﻿using System.IO;
 
-string sourcePath = @"C:\temp\myfolder";
+string path = @"c:\temp\myfolder\file1.txt";
 
 
-try
-{
-    var folders = Directory.EnumerateDirectories(sourcePath,"*.*", SearchOption.AllDirectories);//listando todas as pastas
-    Console.WriteLine("Folders:");
-    foreach(string s in folders)
-    {
-        Console.WriteLine(s);
-    }
-    var files = Directory.EnumerateFiles(sourcePath, "*.*", SearchOption.AllDirectories);//listando todos os arquivos
-    Console.WriteLine("Files:");
-    foreach (string s in files)
-    {
-        Console.WriteLine(s);
-    }
-
-    Directory.CreateDirectory(sourcePath + @"\newFolder");//criando diretorios
-}
-catch (IOException e)
-{
-    Console.WriteLine("An error occcurred: " + e.Message);
-}
+Console.WriteLine("DirectorySeparatorChar: " + Path.DirectorySeparatorChar);
+Console.WriteLine("PathSeparator: " + Path.PathSeparator);
+Console.WriteLine("GetDirectoryName: " + Path.GetDirectoryName(path));
+Console.WriteLine("GetFileName: " + Path.GetFileName(path));
+Console.WriteLine("GetExtension: " + Path.GetExtension(path));
+Console.WriteLine("GetFileNameWithoutExtension: " + Path.GetFileNameWithoutExtension(path));
+Console.WriteLine("GetFullPath: " + Path.GetFullPath(path));
+Console.WriteLine("GetTempPath: " + Path.GetTempPath());
